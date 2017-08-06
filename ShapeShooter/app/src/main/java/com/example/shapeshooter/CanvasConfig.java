@@ -56,4 +56,12 @@ public class CanvasConfig extends View {
         }
         return true;
     }
+    public void drawBullet(Canvas canvas) {
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL);
+        paint.setStrokeWidth(10);
+        paint.setColor(Color.parseColor("#000000"));
+
+        // DRAW BULLET CODE HERE
+    }
 }
