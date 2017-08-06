@@ -19,14 +19,16 @@ public class CanvasConfig extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        // DRAW ARROW OBJECT HERE
         Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setStrokeWidth(10);
         paint.setColor(Color.parseColor("#D3D3D3"));
         Path path = new Path();
-        path.moveTo(getWidth() / 2, getHeight());
-        path.lineTo(5, 5);
+        path.moveTo(getWidth() / 2, getHeight() - 50);
+        path.lineTo(getWidth() / 2 - 50, getHeight() - 50);
+        path.lineTo(getWidth() / 2, getHeight() - 100);
+        path.lineTo(getWidth() / 2 + 50, getHeight() - 50);
+        path.lineTo(getWidth() / 2, getHeight() - 50);
         path.close();
         canvas.drawPath(path, paint);
     }
