@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class CanvasConfig extends View {
@@ -36,5 +37,23 @@ public class CanvasConfig extends View {
     protected void onSizeChanged(int w2, int h2, int w1, int h1) {
         super.onSizeChanged(w2, h2, w1, h1);
         bitmap = Bitmap.createBitmap(w2, h2, Bitmap.Config.ARGB_8888);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        float x = e.getX();
+        float y = e.getY();
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+
+            }
+            case MotionEvent.ACTION_MOVE: {
+
+            }
+            case MotionEvent.ACTION_UP: {
+
+            }
+        }
+        return true;
     }
 }
