@@ -11,6 +11,9 @@ import android.view.View;
 
 public class CanvasConfig extends View {
     private Bitmap bitmap;
+    private double centerX = getWidth() / 2;
+    private double centerY = getHeight() - 75;
+    private double startAngle;
 
     public CanvasConfig(Context context) {
         super(context);
@@ -45,7 +48,7 @@ public class CanvasConfig extends View {
         float y = e.getY();
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN: {
-
+                startAngle = Math.toDegrees(Math.atan2(y - centerY, x - centerX));
             }
             case MotionEvent.ACTION_MOVE: {
 
