@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.view.MotionEvent;
@@ -11,9 +12,11 @@ import android.view.View;
 
 public class CanvasConfig extends View {
     private Bitmap bitmap;
+    private Matrix matrix;
     private double centerX = getWidth() / 2;
     private double centerY = getHeight() - 75;
-    private double startAngle;
+    private double prevAngle;
+    private double currAngle;
 
     public CanvasConfig(Context context) {
         super(context);
@@ -34,6 +37,9 @@ public class CanvasConfig extends View {
         path.lineTo(getWidth() / 2, getHeight() - 50);
         path.close();
         canvas.drawPath(path, paint);
+        /*if (currAngle != prevAngle) {
+
+        }*/
     }
 
     @Override
@@ -48,7 +54,9 @@ public class CanvasConfig extends View {
         float y = e.getY();
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN: {
-                startAngle = Math.toDegrees(Math.atan2(y - centerY, x - centerX));
+                prevAngle = currAngle;
+                currAngle = Math.toDegrees(Math.atan2(y - centerY, x - centerX));
+                matrix.setRotate((float) currAngle, (float) centerX, (float) centerY);
             }
             case MotionEvent.ACTION_MOVE: {
 
